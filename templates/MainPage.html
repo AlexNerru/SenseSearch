@@ -131,7 +131,7 @@
         <div class="panel-body">
           <div class="media">
             <div class="media-left">
-              <img src="imgs/физрук.jpeg" class="media-object" style="width:60px">
+              <img src="../static/imgs/физрук.jpeg" class="media-object" style="width:60px">
             </div>
             <div class="media-body">
               <h4 class="media-heading">Физрук</h4>
@@ -153,7 +153,7 @@
         <div class="panel-body">
           <div class="media">
             <div class="media-left">
-              <img src="imgs/физрук.jpeg" class="media-object" style="width:60px">
+              <img src="../static/imgs/физрук.jpeg" class="media-object" style="width:60px">
             </div>
             <div class="media-body">
               <h4 class="media-heading">Физрук</h4>
@@ -175,7 +175,7 @@
         <div class="panel-body">
           <div class="media">
             <div class="media-left">
-              <img src="imgs/физрук.jpeg" class="media-object" style="width:60px">
+              <img src="../static/imgs/физрук.jpeg" class="media-object" style="width:60px">
             </div>
             <div class="media-body">
               <h4 class="media-heading">Физрук</h4>
@@ -200,18 +200,18 @@
 <!-- Login -->
 <div class="modal fade" id="loginModal" role="dialog">
 <div class="modal-dialog modal-sm"  style="background-color:#ffff;">
-    <form action="">
+    <form action="/" method="post" name="login">
       <div class="container">
         <br>
         <label for="uname"><b>Логин</b></label>
         <br>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" name='email' id='email' placeholder="Enter Username" required>
         <br>
         <label for="psw"><b>Пароль</b></label>
         <br>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" name='password' id='password' placeholder="Enter Password" required>
         <br>
-        <button type="submit" style="padding: 10px 18px;">Авторизироваться</button>
+          <button type="submit" name="submit" style="padding: 10px 18px;">Авторизироваться</button>
         <br>
       </div>
     </form>
@@ -221,21 +221,17 @@
 <!-- Login -->
 <div class="modal fade" id="regModal" role="dialog">
 <div class="modal-dialog modal-sm"  style="background-color:#ffff;">
-    <form action="">
+    <form action="/" method="post" name="register">
       <div class="container">
         <br>
         <label for="uname"><b>Логин</b></label>
         <br>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Username" id="uname" name="uname" required>
         <br>
         <label for="psw"><b>Пароль</b></label>
         <br>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <br>
-        <label for="psw"><b>Почта</b></label>
-        <br>
-        <input type="text" placeholder="Enter Email" name="eml" required>
-        <br>
+        <input type="password" placeholder="Enter Password" id="psw" name="psw" required>
+          <br>
         <button type="submit" style="padding: 10px 18px;">Зарегистрироваться</button>
         <br>
       </div>

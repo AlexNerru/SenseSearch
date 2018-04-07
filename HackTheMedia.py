@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 import flask
 import flask_login
+import sqlite3
 from DataBaseService import DataBaseServise
 from User import User
 
@@ -11,14 +12,37 @@ app.secret_key = 'sense search forever'
 users = {}
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def main():
-
 	db = DataBaseServise()
-	print(db.getAllUsers())
 	global users
 	users = db.getAllUsers()
-	return render_template('index.html')
+	if flask.request.method == 'GET':
+		print(users)
+		return render_template('MainPage.html')
+
+	print(flask.request.form)
+	if 'email' in flask.request.form:
+		email = flask.request.form['email']
+		if flask.request.form['password'] == users[email]:
+			user = User()
+			user.id = email
+			flask_login.login_user(user)
+			return flask.redirect(flask.url_for('protected'))
+		else:
+			return 'Bad login'
+	else:
+		user = User()
+		user._login = flask.request.form['uname']
+		user._password = flask.request.form['psw']
+		try:
+			db.addUser(user)
+		except (sqlite3.IntegrityError):
+			return 'Already exist'
+		return render_template('MainPage.html')
+
+
+
 
 
 @login_manager.user_loader
@@ -42,28 +66,6 @@ def request_loader(request):
 	user.is_authenticated = request.form['password'] == users[email]
 
 	return user
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-	if flask.request.method == 'GET':
-		return '''
-               <form action='login' method='POST'>
-                <input type='text' name='email' id='email' placeholder='email'/>
-                <input type='password' name='password' id='password' placeholder='password'/>
-                <input type='submit' name='submit'/>
-               </form>
-               '''
-
-	email = flask.request.form['email']
-	try:
-		if flask.request.form['password'] == users[email]:
-			user = User()
-			user.id = email
-			flask_login.login_user(user)
-			return flask.redirect(flask.url_for('protected'))
-	except (KeyError):
-		return 'Bad login'
 
 
 @app.route('/protected')
