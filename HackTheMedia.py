@@ -17,6 +17,7 @@ users = {}
 def main():
 
 	db = DataBaseServise()
+	db.getUserEPortrait(1)
 	global users
 	users = db.getAllUsers()
 	print(flask.request.method)
