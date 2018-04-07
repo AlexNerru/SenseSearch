@@ -25,29 +25,46 @@ class DataBaseServise():
 					      conn_str))
 		cur = conn.cursor()
 		cur.execute('INSERT INTO users (login, password)VALUES (?,?)', (user._login,user._password))
-
-		cur.execute('SELECT id FROM users WHERE login=?', (user._login,))
-		user_id = cur.fetchone()
-		cur.execute('INSERT INTO emotions VALUES (?,?,?,?,?,?,?,?)', (user_id[0],0,0,0,0,0,0,0))
 		conn.commit()
 		conn.close()
 
-	def getUserEPortrait(self, user_id):
+	def addFilm(self, film):
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 											conn_str))
 		cur = conn.cursor()
-		cur.execute('SELECT * FROM emotions WHERE id = ?', (user_id,))
+		cur.execute('INSERT INTO films (name)VALUES (?)', (film._name,))
+		cur.execute('SELECT id FROM films WHERE name=?', (film._name,))
+		film_id = cur.fetchone()
+		cur.execute('INSERT INTO emotions VALUES (?,?,?,?,?,?,?,?)', (film_id[0],0,0,0,0,0,0,0))
+		conn.commit()
+		conn.close()
+
+	def getFilmsEmotions(self, film_id):
+		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+											conn_str))
+		cur = conn.cursor()
+		cur.execute('SELECT * FROM emotions WHERE id = ?', (film_id,))
 		emotion = cur.fetchone()
 		conn.commit()
 		conn.close()
 		return emotion
 
-	def updateUserEmotions(self, id, angry, disgust,fear, happy, neutral, sad,surprise):
+	def updateFilmEmotions(self, id, angry, disgust,fear, happy, neutral, sad,surprise):
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 											conn_str))
 		cur = conn.cursor()
-		cur.execute('UPDATE emotions SET angry=?, disgust=?, fear=?, happy=?, neutral=?,sad=?,surprise=? ',
-					(angry, disgust,fear, happy, neutral, sad,surprise))
+		cur.execute('UPDATE emotions SET angry=?, disgust=?, fear=?, happy=?, neutral=?,sad=?,surprise=? WHERE id=?',
+					(angry, disgust,fear, happy, neutral, sad,surprise,id[0],))
 
 		conn.commit()
 		conn.close()
+
+	def getFilmIdByName(self,name):
+		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+											conn_str))
+		cur = conn.cursor()
+		cur.execute('SELECT id FROM films WHERE name = ?', (name,))
+		film_id = cur.fetchone()
+		conn.commit()
+		conn.close()
+		return film_id
