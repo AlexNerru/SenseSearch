@@ -36,7 +36,6 @@ def profile():
 
 @app.route('/load',methods=['GET', 'POST'])
 def load():
-	print(1)
 	if flask.request.method == 'GET':
 		return render_template('Load.html')
 	elif flask.request.method == 'POST':
@@ -44,7 +43,6 @@ def load():
 			flask.flash('No file part')
 			return redirect(flask.request.url)
 		file = flask.request.files['file']
-		print(file)
 		file_name = file.filename
 		extension = os.path.splitext(file_name)[1]
 		finalName = str(uuid.uuid4()) + str(extension)

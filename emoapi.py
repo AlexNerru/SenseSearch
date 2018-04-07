@@ -3,6 +3,7 @@ from statistics import mode
 import cv2
 from keras.models import load_model
 import numpy as np
+import imutils
 
 from utils.datasets import get_labels
 from utils.inference import detect_faces
@@ -66,7 +67,7 @@ def videoemot(path):
             if len(a) > 0:
                 for f in a:
                     try:
-                        emot.append(emotion.emotionimg(frame[f[1]:f[1] + f[3], f[0]:f[0] + f[2]]))
+                        emot.append(emotionimg(frame[f[1]:f[1] + f[3], f[0]:f[0] + f[2]]))
                         #cv2.rectangle(frame, (f[0], f[1]), (f[0] + f[2], f[1] + f[3]), (0, 255, 0), 2)
                     except:
                         continue
@@ -80,7 +81,7 @@ def videoemot(path):
     em_1 = {}
     for k in em_list:
         em_1[k] = 0
-    for k in ans[ser]:
+    for k in emot:
         em_1[k]+=1
     for k in em_list:
         em_1[k]=(float(em_1[k])/count)*100
