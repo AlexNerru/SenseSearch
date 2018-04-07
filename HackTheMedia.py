@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 import flask
 import flask_login
 import sqlite3
@@ -12,35 +12,41 @@ app.secret_key = 'sense search forever'
 users = {}
 
 
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
+
 	db = DataBaseServise()
 	global users
 	users = db.getAllUsers()
+	print(flask.request.method)
+	print(flask.request)
 	if flask.request.method == 'GET':
-		print(users)
-		return render_template('MainPage.html')
-
+		return render_template('MainPage.html', signed = False)
 	print(flask.request.form)
+	if 'quit' in flask.request.form:
+		return render_template('MainPage.html', signed=False)
 	if 'email' in flask.request.form:
 		email = flask.request.form['email']
 		if flask.request.form['password'] == users[email]:
 			user = User()
 			user.id = email
+			user._login = flask.request.form['email']
+			user._password = flask.request.form['password']
 			flask_login.login_user(user)
-			return flask.redirect(flask.url_for('protected'))
+			return render_template('MainPage.html', signed = True,  name = flask.request.form['email'])
 		else:
 			return 'Bad login'
 	else:
 		user = User()
+		user.id = flask.request.form['uname']
 		user._login = flask.request.form['uname']
 		user._password = flask.request.form['psw']
 		try:
 			db.addUser(user)
 		except (sqlite3.IntegrityError):
 			return 'Already exist'
-		return render_template('MainPage.html')
-
+		return render_template('MainPage.html', signed = True, name = flask.request.form['uname'])
 
 
 

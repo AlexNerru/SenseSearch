@@ -93,7 +93,7 @@
 
 
 <body>
-  {% if !signed %}
+  {% if not signed %}
   <nav class="default navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -102,10 +102,11 @@
 
       <form class="navbar-form navbar-right" role="search">
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">Логин</button>
-
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#regModal">Регистрация</button>
       </form>
     </div>
   </nav>
+  {% endif %}
 
 
    {% if signed %}
@@ -116,11 +117,17 @@
        </div>
 
        <ul class="nav navbar-nav navbar-right">
-         <li><a href="#"> {% name %}</a></li>
-         <li><button type="button" class="btn btn-default">Выйти</button></li>
+         <li><a href="#"> {{ name }} </a></li>
+         <li>
+                <form action="/" class="navbar-form navbar-right" name = "quit" method="get">
+                    <button type="submit" name="quit" id ="quit" class="btn btn-default">Выйти</button>
+                </form>
+         </li>
        </ul>
      </div>
    </nav>
+  {% endif %}
+
 
 <div class="container-fluid">
   <div class="row content">
