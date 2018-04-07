@@ -1,4 +1,5 @@
 import sqlite3
+from Film import Film, Tag
 import User
 from Emotion import emotion
 import os
@@ -48,6 +49,26 @@ class DataBaseServise():
 		conn.commit()
 		conn.close()
 		return emotion
+
+	def getAllFilms(self):
+		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+											conn_str))
+		cur = conn.cursor()
+		cur.execute('SELECT * FROM films')
+		all = cur.fetchall()
+		films = []
+		for film in all:
+			cur.execute('SELECT * FROM emotions WHERE id=?',(film[0],))
+			emotion = cur.fetchone()
+			print(emotion)
+			emotags=[Tag('angry', emotion[1]), Tag('disgust',emotion[2]), Tag('fear', emotion[3]), Tag('happy',
+																									   emotion[4])
+					 ,Tag('neutral', emotion[5]), Tag('sad',emotion[6]),Tag('surprise',emotion[7])]
+			film_obj = Film(film[1])
+			film_obj.emotags = emotags
+			films.append(film_obj)
+		return films
+
 
 	def updateFilmEmotions(self, id, angry, disgust,fear, happy, neutral, sad,surprise):
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),

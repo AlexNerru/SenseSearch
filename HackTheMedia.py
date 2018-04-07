@@ -31,14 +31,16 @@ def AddFromOneDbToAnother ():
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
+
 	#AddFromOneDbToAnother()
 	db = DataBaseServise()
+	db.getAllFilms()
 	global users
 	users = db.getAllUsers()
 	print(flask.request.method)
 	print(flask.request)
 	if flask.request.method == 'GET':
-		return render_template('MainPage.html', signed = False)
+		return render_template('MainPage.html', signed = False, films = db.getAllFilms())
 	print(flask.request.form)
 	if 'quit' in flask.request.form:
 		return render_template('MainPage.html', signed=False)
