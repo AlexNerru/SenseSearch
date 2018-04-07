@@ -66,7 +66,6 @@ class DataBaseServise():
 		for film in all:
 			cur.execute('SELECT * FROM emotions WHERE id=?',(film[0],))
 			emotion = cur.fetchone()
-			print(emotion)
 			emotags=[Tag('angry', emotion[1]), Tag('disgust',emotion[2]), Tag('fear', emotion[3]), Tag('happy',
 																									   emotion[4])
 					 ,Tag('neutral', emotion[5]), Tag('sad',emotion[6]),Tag('surprise',emotion[7])]

@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta charset="utf-8">
+    <title>SenseSearch</title>
+    <script src="/static/js/dropzone.js"></script>
+    <script src="/static/js/app.js"></script>
+    <link rel="stylesheet" href="/static/scss/app.css">
+    <link rel="stylesheet" href="/static/scss/dragzone.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">SenseSearch</a>
+
+</nav>
+
+<div id="dropArea" class="container">
+    <div class="row">
+        <div class="col-12">
+            <form action="/load" method="post" class="dropzone decoration"
+                  id="my-awesome-dropzone"></form>
+
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ import sqlite3
 from DataBaseService import DataBaseServise
 from User import User
 import os
+import uuid
 from Film import Film
 
 app = Flask(__name__)
@@ -29,6 +30,26 @@ def AddFromOneDbToAnother ():
 		db.updateFilmEmotions(db.getFilmIdByName(film[14]),film[2],film[5],film[7],film[9],film[11],film[13],film[16])
 
 
+@app.route('/load',methods=['GET', 'POST'])
+def load():
+	print(1)
+	if flask.request.method == 'GET':
+		return render_template('Load.html')
+	elif flask.request.method == 'POST':
+		if 'file' not in flask.request.files:
+			flask.flash('No file part')
+			return redirect(flask.request.url)
+		file = flask.request.files['file']
+		print(file)
+		file_name = file.filename
+		extension = os.path.splitext(file_name)[1]
+		finalName = str(uuid.uuid4()) + str(extension)
+		file_path_small = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+									   'videos')
+		file_path = os.path.join(file_path_small, finalName)
+		file.save(file_path)
+		return render_template('Load.html')
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
 	#AddFromOneDbToAnother()
@@ -51,7 +72,7 @@ def main():
 			user._login = flask.request.form['email']
 			user._password = flask.request.form['password']
 			flask_login.login_user(user)
-			return render_template('MainPage.html', signed = True,  name = flask.request.form['email'])
+			return render_template('MainPage.html', signed = True,  name = flask.request.form['email'], films = db.getAllFilms())
 		else:
 			return 'Bad login'
 	else:
