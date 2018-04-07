@@ -47,6 +47,8 @@
         cursor: pointer;
     }
 
+
+
     button:hover {
         opacity: 0.8;
     }
@@ -71,8 +73,6 @@
         padding-top: 16px;
     }
 
-
-
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 300px) {
       .sidenav {
@@ -93,20 +93,34 @@
 
 
 <body>
-
+  {% if !signed %}
   <nav class="default navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">SenseSearch</a>
       </div>
-      <ul class="nav navbar-nav"></ul>
 
       <form class="navbar-form navbar-right" role="search">
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">Логин</button>
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#regModal">Регистрация</button>
+
       </form>
     </div>
   </nav>
+
+
+   {% if signed %}
+   <nav class="default navbar-default">
+     <div class="container-fluid">
+       <div class="navbar-header">
+         <a class="navbar-brand" href="#">SenseSearch</a>
+       </div>
+
+       <ul class="nav navbar-nav navbar-right">
+         <li><a href="#"> {% name %}</a></li>
+         <li><button type="button" class="btn btn-default">Выйти</button></li>
+       </ul>
+     </div>
+   </nav>
 
 <div class="container-fluid">
   <div class="row content">
@@ -122,7 +136,6 @@
         </span>
       </div>
     </div>
-
 
     <br>
     <div class="col-sm-9">
@@ -238,6 +251,7 @@
     </form>
 </div>
 </div>
+
 
 <footer class="container-fluid">
   <p>Создано на коленке, гыыыы</p>
