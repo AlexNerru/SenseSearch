@@ -1,0 +1,22 @@
+#dropArea {
+    margin: 30px auto 0;
+    padding: 0 20px;
+    border: 2px;
+    background: white;
+}
+
+ul {
+    list-style-type: none;
+}
+img {
+    max-height: 100%;
+    max-width: 100%;
+    padding-top: 4vmax;
+}
+
+ .Link {
+    padding-top: 0.2vmax;
+    font-weight: bold;
+ }
+
+
