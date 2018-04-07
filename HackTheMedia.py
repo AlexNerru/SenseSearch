@@ -31,7 +31,6 @@ def AddFromOneDbToAnother ():
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
-
 	#AddFromOneDbToAnother()
 	db = DataBaseServise()
 	db.getAllFilms()

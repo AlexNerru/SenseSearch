@@ -6,6 +6,10 @@ import os
 
 conn_str = 'sense_search'
 
+
+def comp(args):
+	return args.percent
+
 class DataBaseServise():
 
 	def getAllUsers(self):
@@ -50,6 +54,8 @@ class DataBaseServise():
 		conn.close()
 		return emotion
 
+
+
 	def getAllFilms(self):
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 											conn_str))
@@ -65,6 +71,9 @@ class DataBaseServise():
 																									   emotion[4])
 					 ,Tag('neutral', emotion[5]), Tag('sad',emotion[6]),Tag('surprise',emotion[7])]
 			film_obj = Film(film[1])
+
+			emotags = sorted(emotags, key=comp)[-3:]
+
 			film_obj.emotags = emotags
 			films.append(film_obj)
 		return films
