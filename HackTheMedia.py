@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 import flask
 import flask_login
 import sqlite3
@@ -30,6 +30,9 @@ def AddFromOneDbToAnother ():
 		print(film[16])
 		db.updateFilmEmotions(db.getFilmIdByName(film[14]),film[2],film[5],film[7],film[9],film[11],film[13],film[16])
 
+@app.route('/profile', methods=['GET','POST'])
+def profile():
+	return render_template('ProfilePage.html', name=request.args.get("name"))
 
 @app.route('/load',methods=['GET', 'POST'])
 def load():
@@ -69,6 +72,7 @@ def main():
 		return render_template('MainPage.html', signed=False)
 	if 'email' in flask.request.form:
 		email = flask.request.form['email']
+
 		if flask.request.form['password'] == users[email]:
 			user = User()
 			user.id = email
