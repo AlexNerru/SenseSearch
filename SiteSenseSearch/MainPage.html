@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    form {border: 3px solid #f1f1f1;}
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    input[type=text], input[type=password] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    .container {
+      width: 80%;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    .cancelbtn {
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+    }
+
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 300px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;}
+      span.psw {
+         display: block;
+         float: none;
+      }
+      .cancelbtn {
+         width: 100%;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <nav class="default navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">SenseSearch</a>
+      </div>
+      <ul class="nav navbar-nav"></ul>
+
+      <form class="navbar-form navbar-right" role="search">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">Логин</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#regModal">Регистрация</button>
+      </form>
+    </div>
+  </nav>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Поиск фильма</h4>
+
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Поиск по эмоциям..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+
+
+    <br>
+    <div class="col-sm-9">
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <img src="imgs/физрук.jpeg" class="media-object" style="width:60px">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Физрук</h4>
+              <div>
+                Эмо теги:
+              </div>
+              <br>
+              <div tag="rating">
+                Рейтинг:
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <img src="imgs/физрук.jpeg" class="media-object" style="width:60px">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Физрук</h4>
+              <div>
+                Эмо теги:
+              </div>
+              <br>
+              <div tag="rating">
+                Рейтинг:
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <img src="imgs/физрук.jpeg" class="media-object" style="width:60px">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Физрук</h4>
+              <div>
+                Эмо теги:
+              </div>
+              <br>
+              <div tag="rating">
+                Рейтинг:
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Login -->
+<div class="modal fade" id="loginModal" role="dialog">
+<div class="modal-dialog modal-sm"  style="background-color:#ffff;">
+    <form action="">
+      <div class="container">
+        <br>
+        <label for="uname"><b>Логин</b></label>
+        <br>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+        <br>
+        <label for="psw"><b>Пароль</b></label>
+        <br>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <br>
+        <button type="submit" style="padding: 10px 18px;">Авторизироваться</button>
+        <br>
+      </div>
+    </form>
+</div>
+</div>
+
+<!-- Login -->
+<div class="modal fade" id="regModal" role="dialog">
+<div class="modal-dialog modal-sm"  style="background-color:#ffff;">
+    <form action="">
+      <div class="container">
+        <br>
+        <label for="uname"><b>Логин</b></label>
+        <br>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+        <br>
+        <label for="psw"><b>Пароль</b></label>
+        <br>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <br>
+        <label for="psw"><b>Почта</b></label>
+        <br>
+        <input type="text" placeholder="Enter Email" name="eml" required>
+        <br>
+        <button type="submit" style="padding: 10px 18px;">Зарегистрироваться</button>
+        <br>
+      </div>
+    </form>
+</div>
+</div>
+
+<footer class="container-fluid">
+  <p>Создано на коленке, гыыыы</p>
+</footer>
+
+</body>
+</html>
