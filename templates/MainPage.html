@@ -145,71 +145,33 @@
     </div>
 
     <br>
+
     <div class="col-sm-9">
 
+      {% for film in films %}
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="media">
             <div class="media-left">
               <img src="../static/imgs/физрук.jpeg" class="media-object" style="width:60px">
             </div>
+
             <div class="media-body">
-              <h4 class="media-heading">Физрук</h4>
+              <h4 class="media-heading"> {{ film.name }} </h4>
               <div>
                 Эмо теги:
+                {% for tag in film.emotags %}
+                <a>{{tag.name}} : {{tag.percent}}</a>
+                {% endfor %}
               </div>
               <br>
-              <div tag="rating">
-                Рейтинг:
-              </div>
             </div>
           </div>
         </div>
       </div>
 
       <br>
-
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="media">
-            <div class="media-left">
-              <img src="../static/imgs/физрук.jpeg" class="media-object" style="width:60px">
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Физрук</h4>
-              <div>
-                Эмо теги:
-              </div>
-              <br>
-              <div tag="rating">
-                Рейтинг:
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="media">
-            <div class="media-left">
-              <img src="../static/imgs/физрук.jpeg" class="media-object" style="width:60px">
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Физрук</h4>
-              <div>
-                Эмо теги:
-              </div>
-              <br>
-              <div tag="rating">
-                Рейтинг:
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
 
     </div>
 
