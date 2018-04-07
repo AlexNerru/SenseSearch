@@ -71,15 +71,18 @@ def main():
 	if 'email' in flask.request.form:
 		email = flask.request.form['email']
 
-		if flask.request.form['password'] == users[email]:
-			user = User()
-			user.id = email
-			user._login = flask.request.form['email']
-			user._password = flask.request.form['password']
-			flask_login.login_user(user)
-			return render_template('MainPage.html', signed = True,  name = flask.request.form['email'], films = db.getAllFilms())
+		if email in users:
+			if flask.request.form['password'] == users[email]:
+				user = User()
+				user.id = email
+				user._login = flask.request.form['email']
+				user._password = flask.request.form['password']
+				flask_login.login_user(user)
+				return render_template('MainPage.html', signed = True,  name = flask.request.form['email'], films = db.getAllFilms())
+			else:
+				return 'Bad login'
 		else:
-			return 'Bad login'
+			return 'No login'
 	else:
 		user = User()
 		user.id = flask.request.form['uname']
