@@ -15,6 +15,7 @@ from utils.preprocessor import preprocess_input
 detection_model_path = 'trained_models/detection_models/haarcascade_frontalface_default.xml'
 emotion_model_path = 'trained_models/emotion_models/fer2013_mini_XCEPTION.102-0.66.hdf5'
 emotion_labels = get_labels('fer2013')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
 
 frame_window = 10
 emotion_offsets = (20, 40)
@@ -40,4 +41,48 @@ def emotionimg(img):
     emotion_text = emotion_labels[emotion_label_arg]
     return emotion_text
 
+
+def detect_faces(frame):
+    frame = imutils.resize(frame)
+    small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
+    gray = cv2.cvtColor(small_frame, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(
+        gray,
+        scaleFactor=1.05,
+        minNeighbors=5,
+        minSize=(20, 20),
+        flags=cv2.CASCADE_SCALE_IMAGE
+    )
+    return faces
+
+
+def videoemot(path):
+    cap = cv2.VideoCapture(path)
+    emot = []
+    while(cap.isOpened()):
+        ret, frame = cap.read()
+        if ret:
+            a = detect_faces(frame)*4
+            if len(a) > 0:
+                for f in a:
+                    try:
+                        emot.append(emotion.emotionimg(frame[f[1]:f[1] + f[3], f[0]:f[0] + f[2]]))
+                        #cv2.rectangle(frame, (f[0], f[1]), (f[0] + f[2], f[1] + f[3]), (0, 255, 0), 2)
+                    except:
+                        continue
+        else:
+            break
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    cap.release()
+    count = len(emot)
+    em_list = set(emot)
+    em_1 = {}
+    for k in em_list:
+        em_1[k] = 0
+    for k in ans[ser]:
+        em_1[k]+=1
+    for k in em_list:
+        em_1[k]=(float(em_1[k])/count)*100
+    return em_1
 

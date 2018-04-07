@@ -7,6 +7,7 @@ from User import User
 import os
 import uuid
 from Film import Film
+import emoapi 
 
 app = Flask(__name__)
 login_manager = flask_login.LoginManager()
@@ -48,6 +49,8 @@ def load():
 									   'videos')
 		file_path = os.path.join(file_path_small, finalName)
 		file.save(file_path)
+		emotion = emoapi.videoemot(file_path)
+		print(emotion)
 		return render_template('Load.html')
 
 @app.route('/', methods=['GET', 'POST'])
