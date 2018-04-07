@@ -133,16 +133,31 @@
   <div class="row content">
     <div class="col-sm-3 sidenav">
       <h4>Поиск фильма</h4>
-
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Поиск по эмоциям..">
+        <input type="text" class="form-control" id="search_input" placeholder="Поиск по эмоциям..">
         <span class="input-group-btn">
           <button class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
           </button>
         </span>
       </div>
+      <br>
+      <button type="button" class="btn btn-danger" onclick={addEmotion("Злость")}>Злость</button>
+      <button type="button" class="btn btn-success" onclick={addEmotion("Радость")}>Радость</button>
+      <button type="button" class="btn btn-info" onclick={addEmotion("Грусть")}>Грусть</button>
+      <button type="button" class="btn btn-warning" onclick={addEmotion("Удивление")}>Удивление</button>
+      <button type="button" class="btn" onclick={addEmotion("Отвращение")}>Отвращение</button>
+      <button type="button" class="btn btn-warning" onclick={addEmotion("Страх")}>Страх</button>
+      <button type="button" class="btn btn-info" onclick={addEmotion("Ничего")}>Ничего</button>
+
+      <script>
+        function addEmotion(emotion) {
+            document.getElementById("search_input").value += emotion + "; ";
+        }
+      </script>
+
     </div>
+
 
     <br>
 
