@@ -1,17 +1,23 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 import flask
 import flask_login
+from DataBaseService import DataBaseServise
 from User import User
 
 app = Flask(__name__)
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 app.secret_key = 'sense search forever'
-users = {'foo@bar.tld': {'password': 'secret'}}
+users = {}
 
 
 @app.route('/')
 def main():
+
+	db = DataBaseServise()
+	print(db.getAllUsers())
+	global users
+	users = db.getAllUsers()
 	return render_template('index.html')
 
 
@@ -33,7 +39,7 @@ def request_loader(request):
 
 	user = User()
 	user.id = email
-	user.is_authenticated = request.form['password'] == users[email]['password']
+	user.is_authenticated = request.form['password'] == users[email]
 
 	return user
 
@@ -51,7 +57,7 @@ def login():
 
 	email = flask.request.form['email']
 	try:
-		if flask.request.form['password'] == users[email]['password']:
+		if flask.request.form['password'] == users[email]:
 			user = User()
 			user.id = email
 			flask_login.login_user(user)

@@ -1,8 +1,13 @@
-import FullName
 import flask_login
 
 class User(flask_login.UserMixin):
-	pass
+	_login = ""
+	_password = ""
+
+
+
+
+
 
 
 
