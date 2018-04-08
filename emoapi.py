@@ -68,10 +68,10 @@ def videoemot(path):
             if len(a) > 0:
                 for f in a:
                     try:
+                        
                         emot.append(emotionimg(frame[f[1]:f[1] + f[3], f[0]:f[0] + f[2]]))
-                        #cv2.rectangle(frame, (f[0], f[1]), (f[0] + f[2], f[1] + f[3]), (0, 255, 0), 2)
-                    except:
-                        continue
+                    except Exception as e:
+                        print(e)
         else:
             break
         if cv2.waitKey(1) & 0xFF == ord('q'):

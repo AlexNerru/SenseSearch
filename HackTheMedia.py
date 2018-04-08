@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, make_response
 import flask
 import flask_login
 import sqlite3
@@ -6,8 +6,12 @@ from DataBaseService import DataBaseServise
 from User import User
 import os
 import uuid
+from operator import itemgetter
 from Film import Film
-import emoapi
+import emoapi 
+import tensorflow as tf
+
+graph = tf.get_default_graph()
 
 app = Flask(__name__)
 login_manager = flask_login.LoginManager()
@@ -76,19 +80,49 @@ def load():
 									   'videos')
 		file_path = os.path.join(file_path_small, finalName)
 		file.save(file_path)
-		emotion = emoapi.videoemot(file_path)
-		db = DataBaseServise()
-		db.addFilm(Film(finalName))
-		db.updateFilmEmotions(db.getFilmIdByName(finalName), emotion['angry'], emotion['disgust'], emotion['fear'],
-							  emotion['happy'], emotion['neutral'], emotion['sad'], emotion['surprise'])
-		film = db.getFilm(finalName)
-		print(emotion)
-		print(film)
-		if film.emotags:
-			return render_template('Load.html', film=film)
+		emotion = None
+		global graph
+		with graph.as_default():
+			try:
+				emotion = emoapi.videoemot(file_path)
+			except:
+				emotion = None
+		if emotion:
+			ans = []
+			for k, v in sorted(emotion.items(), key=itemgetter(1))[-2:]:
+				if v > 0:
+					ans.append(k)
+			if ans:
+				print(ans)
+				headers = {'Content-Type': 'text/html'}
+				return make_response(render_template('Load.html', film=ans),200,headers)
+			else:
+				return render_template('Load.html', error="Не выделил эмоции")
 		else:
 			return render_template('Load.html', error="Не выделил эмоции")
 
+
+@app.route('/search', methods=['Post'])
+def search():
+    tags = flask.request.form['tags']
+    array_tags = tags.split(';')
+    res_tags = []
+    for tag in array_tags:
+        if tag.strip() != '':
+            res_tags.append(tag.strip())
+    db = DataBaseServise()
+    films = db.getAllFilms()
+    array_of_correct_films = []
+    for film in films:
+        has = False
+        for tag in film.emotags:
+            if tag.name in res_tags:
+                has = True
+                break
+        if has:
+            array_of_correct_films.append(film)
+    return render_template('MainPage.html', films=array_of_correct_films)
+	
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -164,4 +198,4 @@ def unauthorized_handler():
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(threaded=True, debug=True)
