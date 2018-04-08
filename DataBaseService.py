@@ -36,13 +36,14 @@ class DataBaseServise():
 
 
 	def addFilm(self, film):
-		print(film._name)
+		print("in func")
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 											conn_str))
 		cur = conn.cursor()
 		cur.execute('INSERT INTO films (name)VALUES (?)', (film._name,))
 		cur.execute('SELECT id FROM films WHERE name=?', (film._name,))
 		film_id = cur.fetchone()
+		print (film_id)
 		cur.execute('INSERT INTO emotions VALUES (?,?,?,?,?,?,?,?)', (film_id[0],0,0,0,0,0,0,0))
 		conn.commit()
 		conn.close()

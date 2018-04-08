@@ -67,14 +67,14 @@ def load():
 def main():
 	#AddFromOneDbToAnother()
 	db = DataBaseServise()
-	db.getAllFilms()
+
 	global users
 	users = db.getAllUsers()
 	if flask.request.method == 'GET':
 		return render_template('MainPage.html', signed = False, films = db.getAllFilms())
 	print(flask.request.form)
 	if 'quit' in flask.request.form:
-		return render_template('MainPage.html', signed=False)
+		return render_template('MainPage.html', signed=False, films = db.getAllFilms())
 	if 'email' in flask.request.form:
 		email = flask.request.form['email']
 
@@ -99,7 +99,7 @@ def main():
 			db.addUser(user)
 		except (sqlite3.IntegrityError):
 			return 'Already exist'
-		return render_template('MainPage.html', signed = True, name = flask.request.form['uname'])
+		return render_template('MainPage.html', signed = True, name = flask.request.form['uname'], films = db.getAllFilms())
 
 
 @login_manager.user_loader
