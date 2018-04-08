@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ab4f3d6-9135-4a60-abe2-b681e1ec355e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sense_search" afterPath="$PROJECT_DIR$/sense_search" />
+    <list default="true" id="9ab4f3d6-9135-4a60-abe2-b681e1ec355e" name="Default" comment="Merge branch 'master' of https://github.com/AlexNerru/SenseSearch&#10;&#10;# Conflicts:&#10;#&#9;sense_search">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/videos/03ca372e-e2b1-48be-a57d-a906c75e9eff.mp4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/videos/0794f02d-487f-4e0b-952c-cf8653e2d6c8.mp4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/videos/1f8157ef-9d7c-421f-96ae-e0692b0a020a.mp4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/videos/29511116-8ff8-4e10-8c4c-fcab4783ed34.mp4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/videos/7bdf3453-1115-4a72-8f82-d37ec188d624.mp4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/videos/888817e4-8117-4eb6-be34-038754b341c2.mp4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/videos/c3a0df62-a149-48ae-8fc9-1f772d6c6bfd.mp4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/videos/d471f36a-ac54-4cc0-ac4d-2e217ac68215.mp4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/videos/d52c0f8d-a176-40a3-8009-582e5d795234.mp4" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HackTheMedia.py" afterPath="$PROJECT_DIR$/HackTheMedia.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/HackTheMedia$HackTheMedia.coverage" NAME="HackTheMedia Coverage Results" MODIFIED="1523143709521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/HackTheMedia$HackTheMedia.coverage" NAME="HackTheMedia Coverage Results" MODIFIED="1523170843424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -56,14 +65,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="HackTheMedia.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HackTheMedia.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HackTheMedia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="48" column="39" lean-forward="false" selection-start-line="48" selection-start-column="39" selection-end-line="49" selection-end-column="47" />
+            <state relative-caret-position="480">
+              <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
               <folding>
                 <element signature="e#0#68#0" expanded="true" />
-                <marker date="1523139079615" expanded="true" signature="561:581" ph="SELECT * FRO... import" />
+                <marker date="1523170843220" expanded="true" signature="561:581" ph="SELECT * FRO... import" />
               </folding>
             </state>
           </provider>
@@ -81,8 +90,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="films" pinned="false" current-in-tab="true">
+      <file leaf-file-name="films" pinned="false" current-in-tab="false">
         <entry file="das://table:/df1b667d/6884b2cf-f51f-40f1-9665-8081f0163e73/main.films">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="emotions" pinned="false" current-in-tab="false">
+        <entry file="das://table:/df1b667d/6884b2cf-f51f-40f1-9665-8081f0163e73/main.emotions">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
               <filtering enabled="true" />
@@ -120,16 +138,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dropzone.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/dropzone.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Emotion.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Emotion.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -155,22 +163,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
               <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-              <folding>
-                <marker date="1523134533178" expanded="true" signature="351:370" ph="SELECT * FRO... users" />
-                <marker date="1523134533178" expanded="true" signature="672:719" ph="INSERT INTO users... " />
-                <marker date="1523134533178" expanded="true" signature="952:986" ph="INSERT INTO films... " />
-                <marker date="1523134533178" expanded="true" signature="1019:1052" ph="SELECT id FR... films" />
-                <marker date="1523134533178" expanded="true" signature="1112:1157" ph="INSERT INTO emotions... " />
-                <marker date="1523134533178" expanded="true" signature="1400:1435" ph="SELECT * FRO... emotions" />
-                <marker date="1523134533178" expanded="true" signature="1694:1713" ph="SELECT * FRO... films" />
-                <marker date="1523134533178" expanded="true" signature="1787:1820" ph="SELECT * FRO... emotions" />
-                <marker date="1523134533178" expanded="true" signature="2465:2484" ph="UPDATE emoti... " />
-                <marker date="1523134533178" expanded="true" signature="2465:2485" ph="UPDATE emoti... " />
-                <marker date="1523134533178" expanded="true" signature="2465:2548" ph="UPDATE emoti... " />
-                <marker date="1523134533178" expanded="true" signature="2465:2559" ph="UPDATE emoti... " />
-                <marker date="1523134533178" expanded="true" signature="2465:2626" ph="UPDATE emoti... " />
-                <marker date="1523134533178" expanded="true" signature="2835:2870" ph="SELECT id FR... films" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -201,8 +194,8 @@
         <option value="$PROJECT_DIR$/Film.py" />
         <option value="$PROJECT_DIR$/DataBaseService.py" />
         <option value="$PROJECT_DIR$/templates/Load.html" />
-        <option value="$PROJECT_DIR$/HackTheMedia.py" />
         <option value="$PROJECT_DIR$/emoapi.py" />
+        <option value="$PROJECT_DIR$/HackTheMedia.py" />
       </list>
     </option>
   </component>
@@ -407,11 +400,26 @@
       <option name="project" value="LOCAL" />
       <updated>1523170367418</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="minor changes">
+      <created>1523170642371</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1523170642371</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Merge branch 'master' of https://github.com/AlexNerru/SenseSearch&#10;&#10;# Conflicts:&#10;#&#9;sense_search">
+      <created>1523170996142</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1523170996142</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2116" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21016043" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -419,7 +427,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1802139" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23452584" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299262" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8694853" sideWeight="0.49893048" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28279388" sideWeight="0.49893048" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1947757" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -453,7 +461,9 @@
     <MESSAGE value="Video download" />
     <MESSAGE value="Static files update" />
     <MESSAGE value="Sql update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sql update" />
+    <MESSAGE value="minor changes" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/AlexNerru/SenseSearch&#10;&#10;# Conflicts:&#10;#&#9;sense_search" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/AlexNerru/SenseSearch&#10;&#10;# Conflicts:&#10;#&#9;sense_search" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -466,6 +476,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2296">
           <caret line="1804" column="0" lean-forward="false" selection-start-line="1804" selection-start-column="0" selection-end-line="1804" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -670,6 +681,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -679,7 +691,7 @@
           <caret line="42" column="88" lean-forward="false" selection-start-line="42" selection-start-column="88" selection-end-line="42" selection-end-column="88" />
           <folding>
             <element signature="e#0#68#0" expanded="true" />
-            <marker date="1523139079615" expanded="true" signature="561:581" ph="SELECT * FRO... import" />
+            <marker date="1523170843220" expanded="true" signature="561:581" ph="SELECT * FRO... import" />
           </folding>
         </state>
       </provider>
@@ -692,13 +704,6 @@
       </provider>
     </entry>
     <entry file="das://table:/df1b667d/6884b2cf-f51f-40f1-9665-8081f0163e73/main.films">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/df1b667d/6884b2cf-f51f-40f1-9665-8081f0163e73/main.emotions">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -709,22 +714,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="61" column="8" lean-forward="false" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
-          <folding>
-            <marker date="1523134533178" expanded="true" signature="351:370" ph="SELECT * FRO... users" />
-            <marker date="1523134533178" expanded="true" signature="672:719" ph="INSERT INTO users... " />
-            <marker date="1523134533178" expanded="true" signature="952:986" ph="INSERT INTO films... " />
-            <marker date="1523134533178" expanded="true" signature="1019:1052" ph="SELECT id FR... films" />
-            <marker date="1523134533178" expanded="true" signature="1112:1157" ph="INSERT INTO emotions... " />
-            <marker date="1523134533178" expanded="true" signature="1400:1435" ph="SELECT * FRO... emotions" />
-            <marker date="1523134533178" expanded="true" signature="1694:1713" ph="SELECT * FRO... films" />
-            <marker date="1523134533178" expanded="true" signature="1787:1820" ph="SELECT * FRO... emotions" />
-            <marker date="1523134533178" expanded="true" signature="2465:2484" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2465:2485" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2465:2548" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2465:2559" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2465:2626" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2835:2870" ph="SELECT id FR... films" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -740,6 +730,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -817,33 +808,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-          <folding>
-            <marker date="1523134533178" expanded="true" signature="351:370" ph="SELECT * FRO... users" />
-            <marker date="1523134533178" expanded="true" signature="672:719" ph="INSERT INTO users... " />
-            <marker date="1523134533178" expanded="true" signature="952:986" ph="INSERT INTO films... " />
-            <marker date="1523134533178" expanded="true" signature="1019:1052" ph="SELECT id FR... films" />
-            <marker date="1523134533178" expanded="true" signature="1112:1157" ph="INSERT INTO emotions... " />
-            <marker date="1523134533178" expanded="true" signature="1400:1435" ph="SELECT * FRO... emotions" />
-            <marker date="1523134533178" expanded="true" signature="1694:1713" ph="SELECT * FRO... films" />
-            <marker date="1523134533178" expanded="true" signature="1787:1820" ph="SELECT * FRO... emotions" />
-            <marker date="1523134533178" expanded="true" signature="2465:2484" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2465:2485" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2465:2548" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2465:2559" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2465:2626" ph="UPDATE emoti... " />
-            <marker date="1523134533178" expanded="true" signature="2835:2870" ph="SELECT id FR... films" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HackTheMedia.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="48" column="39" lean-forward="false" selection-start-line="48" selection-start-column="39" selection-end-line="49" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-            <marker date="1523139079615" expanded="true" signature="561:581" ph="SELECT * FRO... import" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -857,10 +822,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://table:/df1b667d/6884b2cf-f51f-40f1-9665-8081f0163e73/main.emotions">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="das://table:/df1b667d/6884b2cf-f51f-40f1-9665-8081f0163e73/main.films">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HackTheMedia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+            <marker date="1523170843220" expanded="true" signature="561:581" ph="SELECT * FRO... import" />
+          </folding>
         </state>
       </provider>
     </entry>

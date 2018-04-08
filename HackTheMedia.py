@@ -52,9 +52,10 @@ def load():
 		file.save(file_path)
 		emotion = emoapi.videoemot(file_path)
 		db = DataBaseServise()
-		db.addFilm(Film(file_name))
-		db.updateFilmEmotions(db.getFilmIdByName(file_name),emotion['angry'],emotion['disgust'], emotion['fear'], emotion['happy'], emotion['neutral'], emotion['sad'], emotion['surprise'])
-		film = db.getFilm(file_name)
+		db.addFilm(Film(finalName))
+		db.updateFilmEmotions(db.getFilmIdByName(finalName),emotion['angry'],emotion['disgust'], emotion['fear'],
+							  emotion['happy'], emotion['neutral'], emotion['sad'], emotion['surprise'])
+		film = db.getFilm(finalName)
 		print(emotion)
 		print(film)
 		if film.emotags:
