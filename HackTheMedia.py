@@ -7,7 +7,7 @@ from User import User
 import os
 import uuid
 from Film import Film
-import emoapi 
+import emoapi
 
 app = Flask(__name__)
 login_manager = flask_login.LoginManager()
@@ -15,7 +15,8 @@ login_manager.init_app(app)
 app.secret_key = 'sense search forever'
 users = {}
 
-def AddFromOneDbToAnother ():
+
+def AddFromOneDbToAnother():
 	conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 										'films.sqlite'))
 	cur = conn.cursor()
@@ -28,13 +29,38 @@ def AddFromOneDbToAnother ():
 		db.addFilm(Film(film[14]))
 		print(db.getFilmIdByName(film[14]))
 		print(film[16])
-		db.updateFilmEmotions(db.getFilmIdByName(film[14]),film[2],film[5],film[7],film[9],film[11],film[13],film[16])
+		db.updateFilmEmotions(db.getFilmIdByName(film[14]), film[2], film[5], film[7], film[9], film[11], film[13],
+							  film[16])
 
-@app.route('/profile', methods=['GET','POST'])
+
+@app.route('/search', methods=['Post'])
+def search():
+	tags = flask.request.form['tags']
+	array_tags = tags.split(';')
+	res_tags = []
+	for tag in array_tags:
+		if tag.strip() != '':
+			res_tags.append(tag.strip())
+	db = DataBaseServise()
+	films = db.getAllFilms()
+	array_of_correct_films = []
+	for film in films:
+		has = False
+		for tag in film.emotags:
+			if tag.name in res_tags:
+				has = True
+				break
+		if has:
+			array_of_correct_films.append(film)
+	return render_template('MainPage.html', films=array_of_correct_films)
+
+
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
 	return render_template('ProfilePage.html', name=request.args.get("name"))
 
-@app.route('/load',methods=['GET', 'POST'])
+
+@app.route('/load', methods=['GET', 'POST'])
 def load():
 	if flask.request.method == 'GET':
 		return render_template('Load.html')
@@ -53,7 +79,7 @@ def load():
 		emotion = emoapi.videoemot(file_path)
 		db = DataBaseServise()
 		db.addFilm(Film(finalName))
-		db.updateFilmEmotions(db.getFilmIdByName(finalName),emotion['angry'],emotion['disgust'], emotion['fear'],
+		db.updateFilmEmotions(db.getFilmIdByName(finalName), emotion['angry'], emotion['disgust'], emotion['fear'],
 							  emotion['happy'], emotion['neutral'], emotion['sad'], emotion['surprise'])
 		film = db.getFilm(finalName)
 		print(emotion)
@@ -63,17 +89,18 @@ def load():
 		else:
 			return render_template('Load.html', error="Не выделил эмоции")
 
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
-	#AddFromOneDbToAnother()
+	# AddFromOneDbToAnother()
 	db = DataBaseServise()
 	global users
 	users = db.getAllUsers()
 	if flask.request.method == 'GET':
-		return render_template('MainPage.html', signed = False, films = db.getAllFilms())
+		return render_template('MainPage.html', signed=False, films=db.getAllFilms())
 	print(flask.request.form)
 	if 'quit' in flask.request.form:
-		return render_template('MainPage.html', signed=False, films = db.getAllFilms())
+		return render_template('MainPage.html', signed=False, films=db.getAllFilms())
 	if 'email' in flask.request.form:
 		email = flask.request.form['email']
 
@@ -84,7 +111,8 @@ def main():
 				user._login = flask.request.form['email']
 				user._password = flask.request.form['password']
 				flask_login.login_user(user)
-				return render_template('MainPage.html', signed = True,  name = flask.request.form['email'], films = db.getAllFilms())
+				return render_template('MainPage.html', signed=True, name=flask.request.form['email'],
+									   films=db.getAllFilms())
 			else:
 				return 'Bad login'
 		else:
@@ -98,7 +126,7 @@ def main():
 			db.addUser(user)
 		except (sqlite3.IntegrityError):
 			return 'Already exist'
-		return render_template('MainPage.html', signed = True, name = flask.request.form['uname'], films = db.getAllFilms())
+		return render_template('MainPage.html', signed=True, name=flask.request.form['uname'], films=db.getAllFilms())
 
 
 @login_manager.user_loader
