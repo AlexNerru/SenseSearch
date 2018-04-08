@@ -114,6 +114,43 @@
   <div class="row content">
     <div class="col-sm-3 sidenav">
       <h1>{{name}}</h1>
+        <br>
+        <h4>Наиболее популярные теги:</h4>>
+        <br>
+        {% for tag in pop_tags %}
+
+            {% if tag.name == 'angry' %}
+                  <div class="label label-danger label-small top-buffer">Злость</div>
+                {% endif %}
+
+                {% if tag.name == 'happy' %}
+                  <div class="label label-success label-small top-buffer">Радость</div>
+                {% endif %}
+
+                {% if tag.name == 'sad' %}
+                  <div class="label label-info label-small top-buffer">Грусть</div>
+                {% endif %}
+
+                {% if tag.name == 'surprise ' %}
+                  <div class="label label-warning label-small top-buffer">Грусть</div>
+                {% endif %}
+
+                {% if tag.name == 'fear' %}
+                  <div class="label label-warning label-small top-buffer">Страх</div>
+                {% endif %}
+
+                {% if tag.name == 'disgust' %}
+                  <div class="label label-success label-small top-buffer">Отвращение</div>
+                {% endif %}
+
+                {% if tag.name == 'surprise' %}
+                  <div class="label label-warning label-small top-buffer">Удивление</div>
+                {% endif %}
+
+                {% if tag.name == 'neutral' %}
+                  <div class="label label-info label-small top-buffer">Нейтральность</div>
+                {% endif %}
+        {% endfor %}
     </div>
     <br>
 
