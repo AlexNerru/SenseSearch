@@ -1,5 +1,5 @@
 from statistics import mode
-
+import os
 import cv2
 from keras.models import load_model
 import numpy as np
@@ -22,7 +22,8 @@ frame_window = 10
 emotion_offsets = (20, 40)
 
 face_detection = load_detection_model(detection_model_path)
-emotion_classifier = load_model(emotion_model_path, compile=False)
+emotion_classifier = load_model(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+									   emotion_model_path), compile=False)
 
 emotion_target_size = emotion_classifier.input_shape[1:3]
 
