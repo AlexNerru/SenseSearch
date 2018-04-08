@@ -147,21 +147,26 @@
     <div class="col-sm-3 sidenav">
       <h4>Поиск фильма</h4>
       <div class="input-group">
-        <input type="text" class="form-control" id="search_input" placeholder="Поиск по эмоциям..">
+
+        <form action="/search" method="post" >
+        <input type="text" class="form-control" id="search_input" name="tags" placeholder="Поиск по эмоциям.."/>
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
+            <button class="btn btn-default" type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+
         </span>
+        </form>
+
       </div>
       <br>
-      <button type="button" class="btn btn-danger" onclick={addEmotion("Злость")}>Злость</button>
-      <button type="button" class="btn btn-success" onclick={addEmotion("Радость")}>Радость</button>
-      <button type="button" class="btn btn-info" onclick={addEmotion("Грусть")}>Грусть</button>
-      <button type="button" class="btn btn-warning" onclick={addEmotion("Удивление")}>Удивление</button>
-      <button type="button" class="btn" onclick={addEmotion("Отвращение")}>Отвращение</button>
-      <button type="button" class="btn btn-warning" onclick={addEmotion("Страх")}>Страх</button>
-      <button type="button" class="btn btn-info" onclick={addEmotion("Ничего")}>Ничего</button>
+      <button type="button" class="btn btn-danger" onclick={addEmotion("angry")}>Злость</button>
+      <button type="button" class="btn btn-success" onclick={addEmotion("happy")}>Радость</button>
+      <button type="button" class="btn btn-info" onclick={addEmotion("sad")}>Грусть</button>
+      <button type="button" class="btn btn-warning" onclick={addEmotion("surprise")}>Удивление</button>
+      <button type="button" class="btn" onclick={addEmotion("disgust")}>Отвращение</button>
+      <button type="button" class="btn btn-warning" onclick={addEmotion("fear")}>Страх</button>
+      <button type="button" class="btn btn-info" onclick={addEmotion("neutral")}>Ничего</button>
 
       <script>
         function addEmotion(emotion) {
