@@ -78,13 +78,16 @@ def videoemot(path):
             break
     cap.release()
     count = len(emot)
-    em_list = set(emot)
+    em_list = ('angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise')
     em_1 = {}
     for k in em_list:
         em_1[k] = 0
     for k in emot:
         em_1[k]+=1
     for k in em_list:
-        em_1[k]=(float(em_1[k])/count)*100
+        try:
+            em_1[k]=(float(em_1[k])/count)*100
+        except:
+            em_1[k] = 0
     return em_1
 

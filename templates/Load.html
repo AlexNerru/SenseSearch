@@ -34,6 +34,51 @@
     </div>
 
 </div>
+{% if film %}
+<div class="media-body">
+    <h4 class="media-heading">{{ film._name }}</h4>
 
+      Эмоцианальный окрас:
+      <br>
+      <br>
+
+      {% for tag in film.emotags %}
+
+      {% if tag.name == 'angry' %}
+        <div class="label label-danger label-small top-buffer">Злость</div>
+      {% endif %}
+
+      {% if tag.name == 'happy' %}
+        <div class="label label-success label-small top-buffer">Радость</div>
+      {% endif %}
+
+      {% if tag.name == 'sad' %}
+        <div class="label label-info label-small top-buffer">Грусть</div>
+      {% endif %}
+
+      {% if tag.name == 'surprise ' %}
+        <div class="label label-warning label-small top-buffer">Грусть</div>
+      {% endif %}
+
+      {% if tag.name == 'fear' %}
+        <div class="label label-warning label-small top-buffer">Страх</div>
+      {% endif %}
+
+      {% if tag.name == 'disgust' %}
+        <div class="label label-success label-small top-buffer">Отвращение</div>
+      {% endif %}
+
+      {% if tag.name == 'surprise' %}
+        <div class="label label-warning label-small top-buffer">Удивление</div>
+      {% endif %}
+
+      {% if tag.name == 'neutral' %}
+        <div class="label label-info label-small top-buffer">Нейтральность</div>
+      {% endif %}
+      {% endfor %}
+
+    <br>
+  </div>
+{% endif %}
 </body>
 </html>
