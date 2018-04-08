@@ -76,6 +76,28 @@ def load():
 			return render_template('Load.html', error="Не выделил эмоции")
 
 
+@app.route('/search', methods=['Post'])
+def search():
+    tags = flask.request.form['tags']
+    array_tags = tags.split(';')
+    res_tags = []
+    for tag in array_tags:
+        if tag.strip() != '':
+            res_tags.append(tag.strip())
+    db = DataBaseServise()
+    films = db.getAllFilms()
+    array_of_correct_films = []
+    for film in films:
+        has = False
+        for tag in film.emotags:
+            if tag.name in res_tags:
+                has = True
+                break
+        if has:
+            array_of_correct_films.append(film)
+    return render_template('MainPage.html', films=array_of_correct_films)
+	
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
 	#AddFromOneDbToAnother()
