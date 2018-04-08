@@ -51,8 +51,16 @@ def load():
 		file_path = os.path.join(file_path_small, finalName)
 		file.save(file_path)
 		emotion = emoapi.videoemot(file_path)
+		db = DataBaseServise()
+		db.addFilm(Film(file_name))
+		db.updateFilmEmotions(db.getFilmIdByName(file_name),emotion['angry'],emotion['disgust'], emotion['fear'], emotion['happy'], emotion['neutral'], emotion['sad'], emotion['surprise'])
+		film = db.getFilm(file_name)
 		print(emotion)
-		return render_template('Load.html')
+		print(film)
+		if film.emotags:
+			return render_template('Load.html', film=film)
+		else:
+			return render_template('Load.html', error="Не выделил эмоции")
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -61,8 +69,6 @@ def main():
 	db.getAllFilms()
 	global users
 	users = db.getAllUsers()
-	print(flask.request.method)
-	print(flask.request)
 	if flask.request.method == 'GET':
 		return render_template('MainPage.html', signed = False, films = db.getAllFilms())
 	print(flask.request.form)
@@ -130,4 +136,4 @@ def unauthorized_handler():
 
 
 if __name__ == '__main__':
-	app.run()
+	app.run(debug=True)

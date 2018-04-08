@@ -6,9 +6,9 @@ import os
 
 conn_str = 'sense_search'
 
-
 def comp(args):
 	return args.percent
+
 
 class DataBaseServise():
 
@@ -25,6 +25,7 @@ class DataBaseServise():
 		conn.close()
 		return dict
 
+
 	def addUser(self, user):
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 					      conn_str))
@@ -33,7 +34,9 @@ class DataBaseServise():
 		conn.commit()
 		conn.close()
 
+
 	def addFilm(self, film):
+		print(film._name)
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 											conn_str))
 		cur = conn.cursor()
@@ -44,6 +47,7 @@ class DataBaseServise():
 		conn.commit()
 		conn.close()
 
+
 	def getFilmsEmotions(self, film_id):
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 											conn_str))
@@ -53,7 +57,6 @@ class DataBaseServise():
 		conn.commit()
 		conn.close()
 		return emotion
-
 
 
 	def getAllFilms(self):
@@ -88,6 +91,7 @@ class DataBaseServise():
 		conn.commit()
 		conn.close()
 
+
 	def getFilmIdByName(self,name):
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 											conn_str))
@@ -97,3 +101,26 @@ class DataBaseServise():
 		conn.commit()
 		conn.close()
 		return film_id
+
+	
+	def getFilm(self, name):
+		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+											conn_str))
+		cur = conn.cursor()
+		cur.execute('SELECT * FROM films')
+		all = cur.fetchall()
+		for film in all:
+			if (film[1] == name):
+				cur.execute('SELECT * FROM emotions WHERE id=?',(film[0],))
+				emotion = cur.fetchone()
+				emotags=[Tag('angry', emotion[1]), Tag('disgust',emotion[2]), Tag('fear', emotion[3]), Tag('happy',
+																									   emotion[4])
+					 ,Tag('neutral', emotion[5]), Tag('sad',emotion[6]),Tag('surprise',emotion[7])]
+				film_obj = Film(film[1])
+
+				emotags = []
+				for em in sorted(emotags, key=comp)[-3:]:
+					if em.percent > 0:
+						emotags.append(em)
+				film_obj.emotags = emotags
+				return film_obj
