@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ab4f3d6-9135-4a60-abe2-b681e1ec355e" name="Default" comment="Island added">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-    </list>
+    <list default="true" id="9ab4f3d6-9135-4a60-abe2-b681e1ec355e" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -429,7 +427,21 @@
       <option name="project" value="LOCAL" />
       <updated>1523177215175</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="minor changes">
+      <created>1523225750360</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1523225750360</updated>
+    </task>
+    <task id="LOCAL-00021" summary="minor changes">
+      <created>1523225855889</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1523225855889</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -476,13 +488,13 @@
     <MESSAGE value="Video download" />
     <MESSAGE value="Static files update" />
     <MESSAGE value="Sql update" />
-    <MESSAGE value="minor changes" />
     <MESSAGE value="Merge branch 'master' of https://github.com/AlexNerru/SenseSearch&#10;&#10;# Conflicts:&#10;#&#9;sense_search" />
     <MESSAGE value="DataBase changes" />
     <MESSAGE value="Minor" />
     <MESSAGE value="Img url added" />
     <MESSAGE value="Island added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Island added" />
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
