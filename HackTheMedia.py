@@ -67,7 +67,6 @@ def load():
 def main():
 	#AddFromOneDbToAnother()
 	db = DataBaseServise()
-
 	global users
 	users = db.getAllUsers()
 	if flask.request.method == 'GET':

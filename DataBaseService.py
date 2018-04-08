@@ -40,7 +40,8 @@ class DataBaseServise():
 		conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.realpath(__file__)),
 											conn_str))
 		cur = conn.cursor()
-		cur.execute('INSERT INTO films (name)VALUES (?)', (film._name,))
+		default_url = 'static/imgs/улица.jpg'
+		cur.execute('INSERT INTO films (name,img_url)VALUES (?,?)', (film._name,default_url,))
 		cur.execute('SELECT id FROM films WHERE name=?', (film._name,))
 		film_id = cur.fetchone()
 		print (film_id)
@@ -76,7 +77,7 @@ class DataBaseServise():
 			film_obj = Film(film[1])
 
 			emotags = sorted(emotags, key=comp)[-3:]
-
+			film_obj.img_url = film[2]
 			film_obj.emotags = emotags
 			films.append(film_obj)
 		return films
@@ -118,7 +119,7 @@ class DataBaseServise():
 																									   emotion[4])
 					 ,Tag('neutral', emotion[5]), Tag('sad',emotion[6]),Tag('surprise',emotion[7])]
 				film_obj = Film(film[1])
-
+				film_obj.img_url = film[2]
 				emotags = []
 				for em in sorted(emotags, key=comp)[-3:]:
 					if em.percent > 0:

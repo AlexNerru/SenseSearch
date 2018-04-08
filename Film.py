@@ -1,5 +1,6 @@
 class Film:
 	emotags = []
+	img_url = ""
 	def __init__(self, name):
 		self._name = name
 
