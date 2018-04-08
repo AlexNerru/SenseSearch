@@ -7,7 +7,7 @@ from User import User
 import os
 import uuid
 from Film import Film
-import emoapi 
+#import emoapi
 
 app = Flask(__name__)
 login_manager = flask_login.LoginManager()
@@ -34,25 +34,48 @@ def AddFromOneDbToAnother ():
 def profile():
 	return render_template('ProfilePage.html', name=request.args.get("name"))
 
-@app.route('/load',methods=['GET', 'POST'])
-def load():
-	if flask.request.method == 'GET':
-		return render_template('Load.html')
-	elif flask.request.method == 'POST':
-		if 'file' not in flask.request.files:
-			flask.flash('No file part')
-			return redirect(flask.request.url)
-		file = flask.request.files['file']
-		file_name = file.filename
-		extension = os.path.splitext(file_name)[1]
-		finalName = str(uuid.uuid4()) + str(extension)
-		file_path_small = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-									   'videos')
-		file_path = os.path.join(file_path_small, finalName)
-		file.save(file_path)
-		emotion = emoapi.videoemot(file_path)
-		print(emotion)
-		return render_template('Load.html')
+# @app.route('/load',methods=['GET', 'POST'])
+# def load():
+# 	if flask.request.method == 'GET':
+# 		return render_template('Load.html')
+# 	elif flask.request.method == 'POST':
+# 		if 'file' not in flask.request.files:
+# 			flask.flash('No file part')
+# 			return redirect(flask.request.url)
+# 		file = flask.request.files['file']
+# 		file_name = file.filename
+# 		extension = os.path.splitext(file_name)[1]
+# 		finalName = str(uuid.uuid4()) + str(extension)
+# 		file_path_small = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+# 									   'videos')
+# 		file_path = os.path.join(file_path_small, finalName)
+# 		file.save(file_path)
+# 		emotion = emoapi.videoemot(file_path)
+# 		print(emotion)
+# 		return render_template('Load.html')
+
+
+@app.route('/search', methods=['Post'])
+def search():
+	tags = flask.request.form['tags']
+	array_tags = tags.split(';')
+	res_tags = []
+	for tag in array_tags:
+		if tag.strip() != '':
+			res_tags.append(tag.strip())
+	db = DataBaseServise()
+	films = db.getAllFilms()
+	array_of_correct_films = []
+	for film in films:
+		has = False
+		for tag in film.emotags:
+			if tag.name in res_tags:
+				has = True
+				break
+		if has:
+			array_of_correct_films.append(film)
+	return render_template('MainPage.html', films=array_of_correct_films)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
