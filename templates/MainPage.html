@@ -148,14 +148,15 @@
       <h4>Поиск фильма</h4>
       <div class="input-group">
 
-        <form action="/search" method="post" >
+        <form action="/search?signed={{ signed }}&name={{ name }}" method="post" >
         <input type="text" class="form-control" id="search_input" name="tags" placeholder="Поиск по эмоциям.."/>
+
         <span class="input-group-btn">
             <button class="btn btn-default" type="submit">
               <span class="glyphicon glyphicon-search"></span>
             </button>
-
         </span>
+
         </form>
 
       </div>
@@ -178,7 +179,9 @@
     <br>
 
     <div class="col-sm-9">
-
+      {% if signed %}
+      <h2>Рекомендации</h2>
+      {% endif %}
       {% for film in films %}
       <div class="panel panel-default">
         <div class="panel-body">
